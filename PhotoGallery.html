@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Images/Dog-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Prata&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </link>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>PhotoGallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Prata', sans-serif;
+            background: var(--Off-White);
+            width: 100%;
+            overflow-x: hidden;
+
+
+        }
+
+        :root {
+            --Darker-Green: #41624f;
+            --Dark-Green: #496956;
+            --Light-Green: #a3b18a;
+            --Wash-Gold: #c6af80;
+            --Off-White: #e8e4dd;
+
+        }
+
+        /*Back to top button START*/
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 25px;
+            border: none;
+            outline: none;
+            background-color: var(--Darker-Green);
+            color: var(--Light-Green);
+            cursor: pointer;
+            padding: 14px;
+            border-radius: 20px;
+        }
+
+        #myBtn:hover {
+            background-color: var(--Light-Green);
+            color: var(--Darker-Green);
+            border: solid 2px;
+
+        }
+
+        /*Back to top button END*/
+
+        /*================ NAVIGATION ========================= */
+
+
+        nav {
+            display: flex;
+            align-items: center;
+            background: var(--Darker-Green);
+            box-shadow: 7px 7px 20px rgb(122 122 122 / 80%);
+            position: relative;
+            width: 100%;
+            height: 130px;
+            background-position: 0 45%;
+            background-size: cover;
+
+        }
+
+        .nav-heading ul {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: .5rem;
+            margin: 0 auto;
+
+        }
+
+        .active,
+        .unactive {
+            padding: 0 1rem;
+            flex-direction: column;
+        }
+
+        .nav-heading .unactive {
+            display: flex;
+            color: var(--Off-White);
+            font-size: 1rem;
+        }
+
+        .nav-heading .unactive:hover {
+            font-size: 1.5rem;
+            color: var(--Light-Green);
+            transition: all .3s ease-out;
+        }
+
+        .nav-heading .active {
+            display: flex;
+            font-size: 2.5rem;
+            color: var(--Light-Green);
+            margin-left: 1rem;
+
+        }
+
+        nav h5 {
+            /*Back Button*/
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        nav h5:hover {
+            color: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 35px;
+            color: #030303;
+        }
+
+        nav a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        nav ul {
+            display: none;
+            justify-content: space-between;
+            list-style: none;
+            font-weight: 400;
+        }
+
+        .nav-li {
+            margin-left: 2em;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: var(--Wash-Gold);
+        }
+
+
+        .logo {
+            width: 15%;
+            display: flex;
+            align-items: center;
+
+            font-weight: 200;
+            color: #93d593;
+        }
+
+        .logo h1 {
+            margin-left: .5em;
+            font-weight: 500;
+            /* transition: 2s; */
+        }
+
+        .logo-img {
+            width: 75px;
+            height: auto;
+            margin-right: .5em;
+
+        }
+
+        /* sidebar START*/
+        nav label.cancel {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .button {
+            display: none;
+        }
+
+        .fa-solid {
+            font-size: 1.5rem;
+            float: right;
+            padding-right: 1rem;
+            color: var(--Light-Green);
+        }
+
+        .menu {
+            width: 100%;
+        }
+
+        .logo {
+            display: none;
+        }
+
+        /* sidebar END*/
+
+        /*===================== BODY ==========================*/
+        body {
+            animation: .8s ease-out 0s 1 slideInFromLeft;
+        }
+
+        .staff-header {
+            margin-top: 60px;
+            margin-left: 60px;
+            font-size: 30px;
+            z-index: -2;
+            color: var(--Wash-Gold);
+        }
+
+        .staff-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 60px;
+            justify-content: space-around;
+            color: var(--Light-Green)
+        }
+
+        .staff-img {
+            width: 100%;
+            height: 75%;
+        }
+
+        .staff-img img {
+            width: 100%;
+        }
+
+        .staff-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 25%;
+            text-align: center;
+
+        }
+
+        .staff-member {
+            width: 250px;
+            height: 350px;
+            /* border: 1px solid black; */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: var(--Darker-Green);
+            z-index: 2;
+            backdrop-filter: blur(2rem);
+            box-shadow: 5px 5px 15px rgba(128, 128, 128, 0.568);
+        }
+
+        .staff-member:hover {
+            transform: scale(1.1);
+            transition: transform .2s ease-out;
+            box-shadow: 3px 3px 20px grey;
+        }
+
+        .dog-grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 60px;
+            justify-content: space-around;
+        }
+
+        .grid-item {
+            width: 250px;
+            height: 400px;
+            /*border: 1px solid black;*/
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: var(--Darker-Green);
+            z-index: 3;
+            /*Highter which means it will go infront of the two circles*/
+            backdrop-filter: blur(2rem);
+        }
+
+        .grid-item:hover {
+            transform: scale(1.1);
+            transition: transform .2s ease-out;
+            box-shadow: 3px 3px 20px grey;
+        }
+
+        .grid-item .img-div {
+            width: 100%;
+            height: 75%;
+            overflow-y: hidden;
+        }
+
+        img.card-img {
+            object-fit: cover;
+            width: 100%;
+            height: 290px;
+        }
+
+        .grid-item .info {
+            width: 100%;
+            height: 25%;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--Light-Green);
+        }
+
+        .dogs-header h3 {
+            margin-left: 7%;
+            font-size: 2rem;
+            color: var(--Wash-Gold);
+        }
+
+        .dog-grid-container {
+            grid-template-columns: auto auto auto;
+        }
+
+        /*===================== FOOTER =========================*/
+        footer {
+
+            position: relative;
+            /*This will make the footer stay at the bottom*/
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--Light-Green);
+            height: auto;
+            width: 100vw;
+            padding-top: 10px;
+            color: var(--Off-White);
+            animation: .8s ease-out 0s 1 slideInFromLeft;
+            font-family: 'Prata', sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-evenly;
+            transition: 2s;
+            transition: transform .3s ease-in;
+            color: var(--Darker-Green);
+            font-family: 'Prada', sans-serif;
+
+        }
+
+        .footer-content li {
+            list-style: none;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px;
+        }
+
+        .footer-content a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-content a:hover {
+            color: var(--Darker-Green);
+        }
+
+
+        .footer-content a:active {
+            color: #fff;
+        }
+
+        .footer-content h3 {
+            font-size: 25px;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-content {
+
+            margin: 10px auto;
+            font-size: 14px;
+
+        }
+
+        .footer-bottom {
+            background: var(--Darker-Green);
+            width: 100vw;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+
+        .footer-link {
+            width: 33.33%;
+            text-align: center;
+            font-family: 'Prata', sans-serif;
+        }
+
+        .footer-link-social a:hover {
+            color: greenyellow;
+            transition: all 0.5s;
+        }
+
+        .footer-link-social ul {
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 2rem;
+        }
+
+        .fa {
+            margin-left: 1rem;
+        }
+
+
+
+        /*================== Media Quaries =====================*/
+        /*          Medium(Tablets)          */
+        @media (max-width: 768px) {
+
+            body {
+                width: 100%;
+            }
+
+            /* Sidebar */
+            .logo {
+                display: flex;
+                position: absolute;
+                left: 40%;
+            }
+
+            .menu ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+                padding-top: 45px;
+                background: var(--Darker-Green);
+                z-index: 1000;
+                transition: all 0.3s ease;
+            }
+
+            .menu ul a {
+                display: block;
+                font-size: 23px;
+                width: 100%;
+                margin-top: 60px;
+                box-shadow: none;
+                text-align: center;
+            }
+
+            .menu ul a:hover:before {
+                box-shadow: none;
+            }
+
+            nav label.bars {
+                display: block;
+                margin-left: 20rem;
+            }
+
+            #check:checked~label.bars {
+                display: none;
+
+            }
+
+            #check:checked~ul label.cancel {
+                display: block;
+
+            }
+
+            #check:checked~ul {
+                left: 0;
+
+            }
+
+            /* Sidebar END*/
+
+
+            /* Body===================== */
+            .dog-grid-container,
+            .staff-container {
+                grid-template-columns: auto auto;
+            }
+        }
+
+
+        /*======================= Small screen (Phone) ==================*/
+        @media(max-width: 425px) {
+
+            /* Navigation */
+            .container-nav {
+                display: flex;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+
+
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+
+            }
+
+            .nav-heading {
+                padding: 0;
+                font-size: 1.5rem;
+            }
+
+            .dog-button {
+                display: none;
+            }
+
+            nav h5 {
+                color: rgba(255, 255, 255, 0.8);
+
+            }
+
+
+
+            /*============== Body ==================*/
+
+            .dog-grid-container,
+            .staff-container {
+                grid-template-columns: auto;
+            }
+
+            /*=============== Footer ====================*/
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content h3 {
+                font-size: 1.2em;
+
+            }
+
+            .footer-content ul {
+                text-align: center;
+            }
+
+            .footer-link-navigation {
+                display: none;
+            }
+
+            .footer-link-getInTouch {
+                display: none;
+            }
+
+            .footer-link-social a {
+                font-size: .7em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Back to top button START --------------------------------------->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#11180;</button>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- Back to top button END ------------------------------------->
+    <header >
+
+        <nav>
+            <div class="logo">
+                <img class="logo-img" src="Images/Dog-logo.png" alt="">
+            </div>
+            <div class="nav-heading menu">
+
+                <input type="checkbox" id="check" data-aos="fade-left">
+                <ul>
+                    <label class="button cancel" for="check"><i class="fa-solid fa-xmark"></i></label>
+                    <li><a class="unactive" href="index.html">Home</a></li>
+                    <li><a class="unactive" href="AboutUs.html">AboutUs</a></li>
+                    <li><a class="unactive" href="OurWork.html">Our Work</a></li>
+                    <li><a class="active" href="PhotoGallery.html">PhotoGallery</a></li>
+                    <li><a class="unactive" href="GetInvolved.html">GetInvolved</a></li>
+                    <li><a class="unactive" href="ContactUs.html">ContactUs</a></li>
+                </ul>
+                <label class="button bars" for="check"><i class="fa-solid fa-bars"></i></label>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="container container-body" data-aos="zoom">
+        <div class="main">
+
+            <div class="staff-header" data-aos="fade-up">
+                <h3>Our Staff</h3>
+            </div>
+
+            <div class="staff-container" data-aos="fade-up">
+
+                <div class="staff-member">
+                    <!-- --------------1 -->
+                    <div class="staff-img">
+                        <img src="Images/Josh.jpg">
+                    </div>
+                    <div class="staff-info">
+                        <h4>Josh</h4>
+                    </div>
+                </div>
+
+                <div class="staff-member">
+                    <!-- --------------2 -->
+                    <div class="staff-img">
+                        <img src="Images/Nova.jpg">
+                    </div>
+                    <div class="staff-info">
+                        <h4>Nova</h4>
+                    </div>
+                </div>
+
+                <div class="staff-member">
+                    <!-- --------------3 -->
+                    <div class="staff-img">
+                        <img src="Images/Aaliyah.jpg">
+                    </div>
+                    <div class="staff-info">
+                        <h4>Aaliyah</h4>
+                    </div>
+                </div>
+                <div class="staff-member" data-aos="fade-right">
+                    <!-- --------------4 -->
+                    <div class="staff-img">
+                        <img src="Images/Jamal.jpg">
+                    </div>
+                    <div class="staff-info">
+                        <h4>Jamal </h4>
+                    </div>
+                </div>
+
+                <div class="staff-member" data-aos="zoom-in">
+                    <!-- --------------5 -->
+                    <div class="staff-img">
+                        <img src="Images/Imani.jpg">
+                    </div>
+                    <div class="staff-info">
+                        <h4>Imani</h4>
+                    </div>
+                </div>
+
+                <div class="staff-member" data-aos="fade-left">
+                    <!-- --------------6 -->
+                    <div class="staff-img">
+                        <img src="Images/Serenity.jpg">
+                    </div>
+                    <div class="staff-info">
+                        <h4>Serenity</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--------------------------DOGS HEADER---------------------------------------------------------------------------------------------->
+            <div class="dogs-header" data-aos="fade-right">
+                <h3>DOGS......</h3>
+            </div>
+            <div class="dog-grid-container">
+
+                <div class="grid-item" data-aos="fade-right">
+                    <!-- ------------1-->
+
+                    <div class="img-div">
+                        <a href="GetInvolved.html">
+                            <img class="card-img" src="Images/Jackie-Dog.jpg" />
+                        </a>
+                    </div>
+                    <div class="info">
+                        <h2>Jackie</h2>
+                        <p>Breed: Dorkie </p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div> <!-- ---------------------------- -->
+
+                <div class="grid-item" data-aos="zoom-in">
+                    <!-- -----------2-->
+
+                    <div class="img-div">
+                        <a href="GetInvolved.html">
+                            <img class="card-img" src="Images/Duke-Dog.jpeg" alt="alt" />
+                        </a>
+                    </div>
+                    <div class="info">
+                        <h2>Duke</h2>
+                        <p>Breed: Jack Russel </p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div>
+
+                <div class="grid-item" data-aos="fade-left">
+                    <!-- ------------3-->
+
+                    <div class="img-div">
+                        <a href="GetInvolved.html">
+                            <img class="card-img" src="Images/Odin-Dog.jpg" alt="alt" />
+                        </a>
+                    </div>
+                    <div class="info">
+                        <h2>Odin</h2>
+                        <p>Breed: Pitbull </p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-right">
+                    <!-- ------------4-->
+                    <div class="img-div ">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Buster-Dog.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Buster</h2>
+                        <p>Breed: Mullins Feist </p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="zoom-in">
+                    <!-- ------------5-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Fabian-Dog.JPG" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Fabian</h2>
+                        <p>Breed: Germin Sheaperd Mix </p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-left">
+                    <!-- ------------6-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Buddy-Dog.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Buddy</h2>
+                        <p>Breed: Labrador</p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-right">
+                    <!-- ------------7-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Sampson-Dog.jpeg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Sampson</h2>
+                        <p>Breed: Australian Cattle </p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="zoom-in">
+                    <!-- ------------8-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html">
+                            <img class="card-img" src="Images/Diego-Dog.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Diego</h2>
+                        <p>Breed: Pit Bull</p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-left">
+                    <!-- ------------9-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html">
+                            <img class="card-img" src="Images/Sam-Dog.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Sam</h2>
+                        <p>Breed: Nova Duck</p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+            </div>
+
+            <div class="dogs-header" data-aos="fade-right">
+                <h3>CATS.......</h3>
+                <!--------------------------CATS HEADER---------------------------------------------------------------------------------------------->
+            </div>
+            <div class="dog-grid-container">
+
+                <div class="grid-item" data-aos="fade-right">
+                    <!-- ------------1-->
+
+                    <div class="img-div">
+                        <a href="GetInvolved.html">
+                            <img class="card-img" src="Images/Luna-Cat.jpg" alt="alt" />
+                        </a>
+                    </div>
+                    <div class="info">
+                        <h2>Luna</h2>
+                        <p>Breed: Bicolor</p>
+                        <p>Gender: Female</p>
+                    </div>
+
+
+                </div> <!-- ---------------------------- -->
+
+                <div class="grid-item" data-aos="zoom-in">
+                    <!-- -----------2-->
+
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Milo-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Milo</h2>
+                        <p>Breed: Bicolor</p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div>
+
+                <div class="grid-item" data-aos="fade-left">
+                    <!-- ------------3-->
+
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Oliver-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Oliver</h2>
+                        <p>Breed: Siamese </p>
+                        <p>Gender: Male</p>
+                    </div>
+
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-right">
+                    <!-- ------------4-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Leo-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Leo</h2>
+                        <p>Breed: Ojos Azules </p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="zoom-in">
+                    <!-- ------------5-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Loki-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Loki</h2>
+                        <p>Breed: Aegean</p>
+                        <p>Gender: Male</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-left">
+                    <!-- ------------6-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Bella-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Bella</h2>
+                        <p>Breed: Ragdoll</p>
+                        <p>Gender: Female </p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-right">
+                    <!-- ------------7-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Charlie-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Charlie</h2>
+                        <p>Breed: Tonkinese</p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="zoom-in">
+                    <!-- ------------8-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/Willow-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Willow</h2>
+                        <p>Breed: Tabby</p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+                <div class="grid-item" data-aos="fade-left">
+                    <!-- ------------9-->
+                    <div class="img-div">
+                        <a href="GetInvolved.html"> <img class="card-img" src="Images/lottie-Cat.jpg" alt="alt" /></a>
+                    </div>
+                    <div class="info">
+                        <h2>Lottie</h2>
+                        <p>Breed: Tabby</p>
+                        <p>Gender: Female</p>
+                    </div>
+                </div> <!-- ---------- -->
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer data-aos="zoom-out">
+        <div class="footer-content">
+            <div class="footer-link footer-link-navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="OurWork.html">Our Work</a></li>
+                    <li><a href="PhotoGallery.html" style="color: #496956 ; font-weight: 900">Photo Gallery</a></li>
+                    <li><a href="GetInvolved.html">Get Involved</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-link footer-link-getInTouch">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li>28 Concorde Rd, Bedfordview, Johannesburg, 2008</li>
+                    <li>082 493 1213</li>
+                    <li id="email">info@rescuearescue.org</li>
+                </ul>
+
+            </div>
+            <div class="footer-link footer-link-social">
+                <h3>Get Connected</h3>
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> copyright &copy; 2020 Rescue A Rescue</p>
+
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

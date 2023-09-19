@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon"
+        href="https://images.vexels.com/media/users/3/142912/isolated/lists/4e17695e6ff43707fa6f1078c24d99c8-black-dog-animal-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Prata&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </link>
+    <!--<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />-->
+    <title>PhotoGallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Prata', sans-serif;
+            background: var(--Off-White);
+            width: 100%;
+            overflow-x: hidden;
+
+        }
+
+        :root {
+            --Darker-Green: #41624f;
+            --Dark-Green: #496956;
+            --Light-Green: #a3b18a;
+            --Wash-Gold: #c6af80;
+            --Off-White: #e8e4dd;
+
+        }
+
+        /*================ NAVIGATION ========================= */
+
+
+        header {
+            /* This section calls the slideInFromLeft animation we defined above */
+            animation: .8s ease-out 0s 1 slideInFromLeft;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            background: var(--Darker-Green);
+            box-shadow: 7px 7px 20px rgb(122 122 122 / 80%);
+            position: relative;
+            width: 100%;
+            height: 130px;
+            background-position: 0 45%;
+            background-size: cover;
+
+        }
+
+        .nav-heading ul {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: .5rem;
+            margin: 0 auto;
+
+        }
+
+        .active,
+        .unactive {
+            padding: 0 1rem;
+            flex-direction: column;
+        }
+
+        .nav-heading .unactive {
+            display: flex;
+            color: var(--Off-White);
+            font-size: 1rem;
+        }
+
+        .nav-heading .unactive:hover {
+            font-size: 1.5rem;
+            color: var(--Light-Green);
+            transition: all .3s ease-out;
+        }
+
+        .nav-heading .active {
+            display: flex;
+            font-size: 2.5rem;
+            color: var(--Light-Green);
+            margin-left: 1rem;
+
+        }
+
+        nav h5 {
+            /*Back Button*/
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        nav h5:hover {
+            color: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 35px;
+            color: #030303;
+        }
+
+        nav a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        nav ul {
+            display: none;
+            justify-content: space-between;
+            list-style: none;
+            font-weight: 400;
+        }
+
+        .nav-li {
+            margin-left: 2em;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: var(--Wash-Gold);
+        }
+
+
+        .logo {
+            width: 15%;
+            display: flex;
+            align-items: center;
+            font-family: 'Popins', sans-serif;
+            font-weight: 200;
+            color: #93d593;
+        }
+
+        .logo h1 {
+            margin-left: .5em;
+            font-weight: 500;
+            /* transition: 2s; */
+        }
+
+        .logo-img {
+            width: 75px;
+            height: auto;
+            margin-right: .5em;
+
+        }
+
+        /* sidebar START*/
+        nav label.cancel {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .button {
+            display: none;
+        }
+
+        .fa-solid {
+            font-size: 1.5rem;
+            float: right;
+            padding-right: 1rem;
+            color: var(--Light-Green);
+        }
+
+        .menu {
+            width: 100%;
+        }
+
+
+
+        /* sidebar END*/
+        .logo {
+            display: none;
+        }
+
+        /*===================== BODY ==========================*/
+        .main {
+            display: flex;
+            flex-direction: row;
+            animation: .8s ease-out 0s 1 slideInFromLeft;
+        }
+
+        .info {
+            width: 50%;
+        }
+
+        .info-article {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 auto;
+            margin-bottom: 1.5rem;
+
+        }
+
+        .info-article h1 {
+            font-size: 2rem;
+            margin-top: 1.5rem;
+            color: var(--Darker-Green);
+            text-shadow: 1px 1px 2px var(--Darker-Green);
+
+        }
+
+        .info-article p,
+        li {
+            color: var(--Darker-Green);
+            font-size: .9rem;
+
+        }
+
+        .vl {
+            border-left: 5px dashed var(--Darker-Green);
+            height: 600px;
+            position: absolute;
+            top: 16%;
+            left: 50%;
+        }
+
+        .form {
+            width: 40%;
+
+            height: 600px;
+            background: var(--Light-Green);
+            border-radius: 5px;
+
+            display: flex;
+            flex-direction: column;
+            margin: 3rem auto;
+
+
+        }
+
+        .form h2 {
+            text-align: center;
+            padding: 2rem 0 5rem 0;
+            color: var(--Darker-Green);
+            font-size: 1.7rem;
+        }
+
+        .form label {
+            margin-bottom: 1rem;
+            margin-left: 3rem;
+            color: var(--Off-White);
+        }
+
+        .form input {
+            margin-left: 2rem;
+            display: flex;
+            border: none;
+            border-radius: 5px;
+            height: 20px;
+            padding-left: 5px;
+
+        }
+
+        .form textarea {
+            border: none;
+            border-radius: 5px;
+            display: flex;
+        }
+
+        .submit-button {
+            margin-top: 1rem;
+            background-color: var(--Darker-Green);
+            width: 80px;
+            color: var(--Off-White);
+            font-size: .9rem;
+
+            display: flex;
+            justify-content: center;
+            transition: all .5 ease-in;
+        }
+
+        .submit-button:hover {
+            /* color:var(--Darker-Green); */
+            border: 2px solid var(--Darker-Green);
+            opacity: .8;
+            scale: calc(1.1);
+            cursor: pointer;
+
+        }
+
+        .member {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 2em;
+            color: var(--Off-White);
+            margin-top: 2em;
+        }
+        .member:hover{
+            color: #41624f;
+            transition: .8s;
+        }
+
+
+        /*===================== FOOTER =========================*/
+        footer {
+
+            position: relative;
+            /*This will make the footer stay at the bottom*/
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--Light-Green);
+            height: auto;
+            width: 100vw;
+            padding-top: 10px;
+            color: var(--Off-White);
+            animation: .8s ease-out 0s 1 slideInFromLeft;
+            font-family: 'Prata', sans-serif;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-evenly;
+            transition: 2s;
+            transition: transform .3s ease-in;
+            color: var(--Darker-Green);
+            font-family: 'Prada', sans-serif;
+
+        }
+
+        .footer-content li {
+            list-style: none;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px;
+        }
+
+        .footer-content a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+
+        }
+
+        .footer-content a:hover {
+            color: var(--Darker-Green);
+        }
+
+        .fa {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+
+
+        .footer-content a:active {
+            color: #fff;
+        }
+
+        .footer-content h3 {
+            font-size: 25px;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-content {
+
+            margin: 10px auto;
+            font-size: 14px;
+
+        }
+
+        .footer-bottom {
+            background: var(--Darker-Green);
+            width: 100vw;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+
+        .footer-link {
+            width: 33.33%;
+            text-align: center;
+            font-family: 'Prata', sans-serif;
+        }
+
+        .footer-link-social a:hover {
+            color: greenyellow;
+            transition: all 0.5s;
+        }
+
+        .footer-link-social ul {
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 2rem;
+        }
+
+
+        /*================== Media Quaries =====================*/
+        /*          Medium(Tablets)          */
+        @media (max-width: 768px) {
+
+            body {
+                width: 100%;
+            }
+
+            /* Sidebar */
+            .logo {
+                display: flex;
+                position: absolute;
+                left: 40%;
+            }
+
+            .menu ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+                padding-top: 45px;
+                background: var(--Darker-Green);
+                z-index: 1000;
+                transition: all 0.3s ease;
+            }
+
+            .menu ul a {
+                display: block;
+                font-size: 23px;
+                width: 100%;
+                margin-top: 60px;
+                box-shadow: none;
+                text-align: center;
+            }
+
+            .menu ul a:hover:before {
+                box-shadow: none;
+            }
+
+            nav label.bars {
+                display: block;
+            }
+
+            #check:checked~label.bars {
+                display: none;
+
+            }
+
+            #check:checked~ul label.cancel {
+                display: block;
+
+            }
+
+            #check:checked~ul {
+                left: 0;
+
+            }
+
+            /* Sidebar END*/
+
+            /* Body */
+            .form {
+                height: 90%;
+                margin-top: 6rem;
+            }
+
+            .vl {
+                height: 770px;
+            }
+
+            .form textarea {
+                width: 90%;
+            }
+        }
+
+
+
+        /*======================= Small screen (Phone) ==================*/
+        @media(max-width: 425px) {
+
+            /* Navigation */
+            .container-nav {
+                display: flex;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+
+
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+
+            }
+
+            .nav-heading {
+                padding: 0;
+                font-size: 1.5rem;
+            }
+
+            .dog-button {
+                display: none;
+            }
+
+            nav h5 {
+                color: rgba(255, 255, 255, 0.8);
+
+            }
+
+
+
+            /*============== Body ==================*/
+            .vl {
+                display: none;
+            }
+
+            body {
+                width: 100%;
+            }
+
+            .main {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .info {
+                width: 100%;
+            }
+
+            .info-article h1 {
+                font-size: 1.5rem;
+            }
+
+            .form {
+                width: 100%;
+            }
+
+            /*=============== Footer ====================*/
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content h3 {
+                font-size: 1em;
+
+            }
+
+            .footer-content ul {
+                text-align: center;
+            }
+
+            .footer-link-navigation {
+                display: none;
+            }
+
+            .footer-link-getInTouch {
+                display: none;
+            }
+
+            .footer-link-social a {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <div class="logo">
+                <img class="logo-img"
+                    src="https://images.vexels.com/media/users/3/142912/isolated/lists/4e17695e6ff43707fa6f1078c24d99c8-black-dog-animal-logo.png"
+                    alt="">
+            </div>
+            <div class="nav-heading menu">
+
+                <input type="checkbox" id="check" data-aos="fade-left">
+                <ul>
+                    <label class="button cancel" for="check"><i class="fa-solid fa-xmark"></i></label>
+                    <li><a class="unactive" href="index.html">Home</a></li>
+                    <li><a class="unactive" href="AboutUs.html">AboutUs</a></li>
+                    <li><a class="unactive" href="OurWork.html">Our Work</a></li>
+                    <li><a class="unactive" href="PhotoGallery.html">PhotoGallery</a></li>
+                    <li><a class="active" href="GetInvolved.html">GetInvolved</a></li>
+                    <li><a class="unactive" href="ContactUs.html">ContactUs</a></li>
+                </ul>
+                <label class="button bars" for="check"><i class="fa-solid fa-bars"></i></label>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="container container-body" data-aos="zoom-out">
+        <div class="main">
+            <section class="info">
+                <div class="info-article">
+                    <h1>Corporate Sponsorship</h1>
+                    <p>Companies wishing to support the Sandton SPCA can do so in many ways:</p>
+                    <ul>
+                        <li>Add Sandton SPCA as a charity on your payroll giving programme</li>
+                        <li>Hold a CSI day at our premises</li>
+                        <li>Donations - click here for our wish list</li>
+                    </ul>
+                    <p>If your company would like to support the Sandton SPCA please contact us on 011 444 7730, fax 011
+                        444 8056 or email info@sandtonspca.org.za</p>
+                </div>
+
+                <div class="info-article">
+                    <h1>Become a Volunteer</h1>
+                    <p>Change makers - Ages 17 and up</p>
+                    <ol>
+                        <li>Animal Enrichment- Dog waling and basic grooming</li>
+                        <li>Fundrasing- Events, Markets and book shop</li>
+                        <li>Maintenance and admin</li>
+                    </ol>
+                    <p>Mini changers - Ages 7-10 years</p>
+                    <p>Community Service Makers - Ages 11-16 years</p>
+                </div>
+
+                <div class="info-article">
+                    <h1>Become a Member</h1>
+                    <p>
+                        By becoming a memeber of the RAR foundation you are helping us by rasing funds by donating and
+                        by lending a helping hand in our volenteer programs. This gives you the opportunity to vote in
+                        our AGM. Members are also offered the chance to participate in helping the committee shape the
+                        future of the organisation and work we do in preventing cruelty to animals and educating our
+                        communities
+
+                    </p>
+
+                </div>
+            </section>
+            <div class="vl"></div>
+            <section class="form">
+
+                <h2>Become a Member Now!!!</h2>
+
+
+                <h1><a class="member"
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSc1a9ndyik3Ji1jDCAyzYWgUrdUXEH5FhXp4SvYylw0ySJE5Q/viewform?usp=sf_link">Click here!!</a></h1>
+                <!-- <label>Name:
+                        <input type="text" placeholder="Toby">
+                    </label>
+                    <label>Surname:
+                        <input type="text" placeholder="Williams">
+                    </label>
+                    <label>Email:
+                        <input type="email" placeholder="Toby_Williams@gmail.com">
+                    </label>
+                    <label>Phone:
+                        <input type="number" placeholder="068 435 1232">
+                    </label>
+                    <label>Address:
+                        <input type="text" placeholder="16 Blue Avenue">
+                    </label>
+                    <label>Enquiry:
+                        <textarea name="Enquiry" id="" cols="40" rows="5"></textarea>
+
+                        <input type="submit" class="submit-button"> -->
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-link footer-link-navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="OurWork.html">Our Work</a></li>
+                    <li><a href="PhotoGallery.html">Photo Gallery</a></li>
+                    <li><a href="GetInvolved.html" style="color: #496956 ; font-weight: 900">Get Involved</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-link footer-link-getInTouch">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li>28 Concorde Rd, Bedfordview, Johannesburg, 2008</li>
+                    <li>082 493 1213</li>
+                    <li id="email">info@rescuearescue.org</li>
+                </ul>
+
+            </div>
+            <div class="footer-link footer-link-social">
+                <h3>Get Connected</h3>
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> copyright &copy; 2020 Rescue A Rescue</p>
+
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

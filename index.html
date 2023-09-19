@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Homestyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Prata&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon"
+        href="Images/Dog-logo.png">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>PoeNav</title>
+</head>
+
+<body >
+     <!-- Back to top button START --------------------------------------->
+     <button onclick="topFunction()" id="myBtn" title="Go to top">&#11180;</button>
+     <script>
+         //Get the button
+         var mybutton = document.getElementById("myBtn");
+ 
+         // When the user scrolls down 20px from the top of the document, show the button
+         window.onscroll = function () { scrollFunction() };
+ 
+         function scrollFunction() {
+             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                 mybutton.style.display = "block";
+             } else {
+                 mybutton.style.display = "none";
+             }
+         }
+ 
+         // When the user clicks on the button, scroll to the top of the document
+         function topFunction() {
+             document.body.scrollTop = 0;
+             document.documentElement.scrollTop = 0;
+         }
+     </script>
+     <!-- Back to top button END ------------------------------------->
+    <header >
+        <div class="container container-nav">
+            <div class="logo">
+                <img class="logo-img"
+                    src="Images\Dog-logo.png"
+                    alt="">
+            </div>
+            <nav >
+                <div class="menu" >
+                    <input type="checkbox" id="check" data-aos="fade-left">
+                    <label class="button cancel" for="check"><i class="fa-solid fa-xmark"></i></label>
+                    <ul>
+                        <label class="button cancel" for="check"><i class="fa-solid fa-xmark"></i></label>
+                        <li><a class="link active" href="index.html">Home</a></li>
+                        <li><a class="link unactive" href="AboutUs.html">About Us</a></li>
+                        <li><a class="link unactive" href="OurWork.html">Our Work</a></li>
+                        <li><a class="link unactive" href="PhotoGallery.html">Photo Gallery</a></li>
+                        <li><a class="link unactive" href="GetInvolved.html">Get Involved</a></li>
+                        <li><a class="link unactive" href="ContactUs.html">Contact Us</a></li>
+                        
+                    </ul>
+                    <label class="button bars" for="check"><i class="fa-solid fa-bars"></i></label>
+                </div>
+
+
+
+            </nav>
+        </div>
+    </header>
+
+    <div class="container container-body" >
+        <div class="main" >
+
+            <div class="main-img">
+                <h1>Rescue A Rescue</h1>
+            </div>
+
+            <div class="organisation-info">
+                <p>WE ARE THE </p>
+                <h3>RESCUE A RESCUE FOUNDATION</h3>
+                <h4>We are a non-profit with a mission to relieve the suffering of animals living in impoverished
+                    communities across Johannesburg, providing them with necessary medical care, and then works
+                    tirelessly to find loving homes for them.</h4>
+
+            </div>
+
+            <div class="learn-more" ><a href="AboutUs.html">Learn More</a></div>
+
+            <div class="rescue-heading " data-aos="fade-up">
+                <h2>Meet Our Rescues</h2>
+            </div>
+            <div class="dog-card " data-aos="zoom-out" data-aos-duration="3500">
+
+                <div class="card ">
+
+                    <div>
+                        <img class="card-img" src="Images/Duke-Dog.jpeg"
+                            alt="alt" />
+                    </div>
+                    <div class="info ">
+                        <h2>Duke</h2>
+                        <p>Breed: Jack Russel </p>
+                        <p>Gender: Male</p>
+                    </div>
+
+                </div>
+                <div class="card" data-aos="fade-up">
+
+                    <div>
+                        <img class="card-img"
+                            src="Images/Odin-Dog.jpg"
+                            alt="alt" />
+                    </div>
+                    <div class="info">
+                        <h2>Odin</h2>
+                        <p>Breed: Pitbull </p>
+                        <p>Gender: Male</p>
+                    </div>
+
+                </div>
+
+                <div class="card" data-aos="fade-up">
+
+                    <div>
+                        <img class="card-img"
+                            src="Images/Willow-Cat.jpg"
+                            alt="alt" />
+                    </div>
+                    <div class="info">
+                        <h2>Willow</h2>
+                        <p>Breed: Tabby</p>
+                        <p>Gender: Female</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="buttons">
+                <div data-aos="zoom-in"><a href="PhotoGallery.html">See More Rescues</a></div>
+                <div data-aos="zoom-in"><a href="GetInvolved.html">Get Involved</a></div>
+
+            </div>
+
+        </div>
+
+        <footer data-aos="fade-up" data-aos-duration="4000">
+            <div class="footer-content">
+                <div class="footer-link footer-link-navigation">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a class="" href="index.html" style="color: #496956 ; font-weight: 900">Home</a></li>
+                        <li><a href="AboutUs.html">About Us</a></li>
+                        <li><a href="OurWork.html">Our Work</a></li>
+                        <li><a href="PhotoGallery.html">Photo Gallery</a></li>
+                        <li><a href="GetInvolved.html">Get Involved</a></li>
+                        <li><a href="ContactUs.html">Contact Us</a></li>
+                    </ul>
+
+                </div>
+                <div class="footer-link footer-link-getInTouch">
+                    <h3>Get In Touch</h3>
+                    <ul>
+                        <li>28 Concorde Rd, Bedfordview, Johannesburg, 2008</li>
+                        <li>082 493 1213</li>
+                        <li id="email">info@rescuearescue.org</li>
+                    </ul>
+
+                </div>
+                <div class="footer-link footer-link-social">
+                    <h3>Get Connected</h3>
+                    <ul>
+                        <li><a href="#" class="fa fa-facebook"></a></li>
+                        <li><a href="#" class="fa fa-instagram"></a></li>
+                        <li><a href="#" class="fa fa-linkedin"></a></li>
+                        <li><a href="#" class="fa fa-twitter"></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> copyright &copy; 2020 Rescue A Rescue</p>
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+</body>
+
+</html>

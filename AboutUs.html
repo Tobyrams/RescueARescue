@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="Aboutus.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Prata&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://images.vexels.com/media/users/3/142912/isolated/lists/4e17695e6ff43707fa6f1078c24d99c8-black-dog-animal-logo.png">
+    <!--<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />-->
+    <title>AboutUs</title>
+</head>
+
+<body data-aos="zoom-out">
+    <!-- Back to top button START --------------------------------------->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#11180;</button>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- Back to top button END ------------------------------------->
+
+    <header>
+
+        <nav>
+            <div class="logo">
+                <img class="logo-img"
+                    src="Images/Dog-logo.png"
+                    alt="">
+            </div>
+            <div class="nav-heading menu">
+
+                <input type="checkbox" id="check" data-aos="fade-left">
+                <ul>
+                    <label class="button cancel" for="check"><i class="fa-solid fa-xmark"></i></label>
+                    <li><a class="unactive" href="index.html">Home</a></li>
+                    <li>
+                        <h2 class="active">ABOUT US</h2>
+                    </li>
+                    <li><a class="unactive" href="OurWork.html">Our Work</a></li>
+                    <li><a class="unactive" href="PhotoGallery.html">PhotoGallery</a></li>
+                    <li><a class="unactive" href="GetInvolved.html">GetInvolved</a></li>
+                    <li><a class="unactive" href="ContactUs.html">ContactUs</a></li>
+                </ul>
+                <label class="button bars" for="check"><i class="fa-solid fa-bars"></i></label>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container container-body">
+        <div class="main" data-aos="zoom-out">
+
+            <section class="page-section">
+                <img src="Images/Mission-Dog.jpg">
+                <article>
+                    <h1>Mission</h1>
+                    <p>In addition to providing beterinary care to local communities, Rescue A Rescue provides
+                        rehabilitation, and re-homing services to domestic animals.Our mission as a registered,
+                        non-profit organization committed to bringing relief to animals in distress is made possible by
+                        the support of caring individuals and corporate entities. </p>
+                </article>
+            </section>
+
+            <section class="page-section">
+                <img src="Images/Vision-Dog.jpg">
+                <article>
+                    <h1>Vision</h1>
+                    <p>Our goal is to continue saving more and more animals every year and to encourage and support
+                        other shelters in a united mission.We want to continue to provide educational programs to the
+                        public that demonstrate compassion and respect for all living creatures.We will research and
+                        develop new innovative ways that improve the human/animal bond and the benefits of having a
+                        furry companion in your life.</p>
+                </article>
+            </section>
+
+            <section class="page-section" data-aos="fade-up">
+                <img src="Images/History-Dog.jpg">
+                <article>
+                    <h1>History</h1>
+                    <p>Rescue a rescue is a new non-profit that started with only 3 friends that had a passion for
+                        taking care of animals. This then turn into a foundation that helps struggling animals in and
+                        around Johannesburg. The foundation started in 2021 and has been improving the lives of
+                        suffering animals tremendously and we strive to keep improving. </p>
+                </article>
+            </section>
+        </div>
+    </div>
+
+    <footer data-aos="zoom-out">
+        <div class="footer-content">
+            <div class="footer-link footer-link-navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUs.html" style="color: #496956 ; font-weight: 900">About Us</a></li>
+                    <li><a href="OurWork.html">Our Work</a></li>
+                    <li><a href="PhotoGallery.html">Photo Gallery</a></li>
+                    <li><a href="GetInvolved.html">Get Involved</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-link footer-link-getInTouch">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li>28 Concorde Rd, Bedfordview, Johannesburg, 2008</li>
+                    <li>082 493 1213</li>
+                    <li id="email">info@rescuearescue.org</li>
+                </ul>
+
+            </div>
+            <div class="footer-link footer-link-social">
+                <h3>Get Connected</h3>
+                <ul>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> copyright &copy; 2020 Rescue A Rescue</p>
+
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
