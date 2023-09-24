@@ -4,6 +4,8 @@ Aim of the project is to create a website for a NGO(Dog adoption center) to help
 ------------------------------
 *Home page where you will be introduced to the website.*
 ![image](https://github.com/Tobyrams/RescueARescue/assets/87528122/a295c779-da56-4b72-97de-ad19704a6388)
+![image](https://github.com/Tobyrams/RescueARescue/assets/87528122/f3022243-e385-4ccb-94d8-574169690cb3)
+
 
 *About Us page where you will get to know more about the company and the people behind the organization.*
 ![image](https://github.com/Tobyrams/RescueARescue/assets/87528122/f09b5199-284a-40e0-93c2-0a1d88171f09)
