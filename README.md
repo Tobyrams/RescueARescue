@@ -13,7 +13,7 @@ RescueARescue is a website designed for a non-profit organization dedicated to d
 
 ## Live Demo
 [![Live Demo](https://github.com/Tobyrams/RescueARescue/assets/87528122/a295c779-da56-4b72-97de-ad19704a6388)](https://tobyrams.github.io/RescueARescue/)
-Click the image above 👆🏽 to watch a demo of SecondHandBookStore in action.
+Click the image above 👆🏽 to view the live application.
 
 ## Acknowledgments
 - [FontAwesome](https://fontawesome.com/search) - For all the icons.
